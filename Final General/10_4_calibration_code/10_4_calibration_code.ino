@@ -10,7 +10,6 @@
 
 // TODO: Replace "___", and assign the pin number for each LDR connected to the Arduino
 //  reference 10.2 potentiometer code
-#define NUMBER_OF_CALIBRATIONS 10
 int LDR_Pin[7] = {8,
                   9,
                   10,
@@ -93,7 +92,7 @@ void Calibrate() {
   Serial.println("Starting calibration");
   // Calibration
   // White Calibration
-  for (int calii = 0; calii < NUMBER_OF_CALIBRATIONS; calii++) { // TODO: Replace "___", and repeat the section of code
+  for (int calii = 0; calii < numMeas; calii++) { // TODO: Replace "___", and repeat the section of code
                                                     //  for the number of calibration measurements desired
 
     fastBlink(); // blink the indicator LED
@@ -118,7 +117,7 @@ void Calibrate() {
   Serial.println("Starting calibration");
  
   // Black Calibration
-  for (int calii = 0; calii < NUMBER_OF_CALIBRATIONS; calii++) { // TODO: Replace "___", and repeat the section of code
+  for (int calii = 0; calii < numMeas; calii++) { // TODO: Replace "___", and repeat the section of code
                                                     //  for the number of calibration measurements desired
     fastBlink(); // blink the indicator LED
 
@@ -200,6 +199,13 @@ void Print() {
   Serial.print(MxIndex);Serial.print(" "); // this is the index of that maximum (0 through 6) (aka which element in LDR)
   Serial.println(error); // this will show the calculated error (-3 through 3) 
   
+  Serial.println("Min Max (0-7)");
+  for (int Li = 0; Li < 7; Li++) { // TODO: Replace "___", and loop over all of the LDRs
+    Serial.print(Mn[Li]); Serial.print(" ");
+    Serial.print(Mx[Li]); Serial.print(" ");
+    delay(2);
+    Serial.print(" | ");
+  }
   delay(200); //just here to slow down the output for easier reading if wanted 
  
 } // end Print()
