@@ -19,6 +19,11 @@
 // ************************************************************************************************* //
 // Declare Variables
 
+float mapf(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 // Variables and Libaries for Motor
 #include <Wire.h>
 #include <Adafruit_MotorShield.h> // Must add libary - see MotorShield Manual
